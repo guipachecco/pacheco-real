@@ -1,2 +1,2 @@
 # pacheco-real
-primeiro repositório
+primeiro repositório focado em desafios e exercícios
