@@ -1,0 +1,58 @@
+Biblioteca:
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Livro {
+    String titulo;
+    String autor;
+    String isbn;
+
+    Livro(String titulo, String autor, String isbn) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.isbn = isbn;
+    }
+}
+
+public class Biblioteca {
+    static ArrayList<Livro> livros = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        while (true) {
+            System.out.println("1 - Adicionar Livro");
+            System.out.println("2 - Listar Livros");
+            System.out.println("3 - Sair");
+            int opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            if (opcao == 1) adicionarLivro();
+            else if (opcao == 2) listarLivros();
+            else if (opcao == 3) break;
+            else System.out.println("Opção inválida");
+        }
+    }
+
+    static void adicionarLivro() {
+        System.out.print("Título: ");
+        String titulo = scanner.nextLine();
+        System.out.print("Autor: ");
+        String autor = scanner.nextLine();
+        System.out.print("ISBN: ");
+        String isbn = scanner.nextLine();
+        livros.add(new Livro(titulo, autor, isbn));
+        System.out.println("Livro adicionado.");
+    }
+
+    static void listarLivros() {
+        if (livros.isEmpty()) {
+            System.out.println("Nenhum livro registrado.");
+            return;
+        }
+        for (int i = 0; i < livros.size(); i++) {
+            Livro l = livros.get(i);
+            System.out.println((i+1) + " - " + l.titulo + " | " + l.autor + " | " + l.isbn);
+        }
+    }
+}
